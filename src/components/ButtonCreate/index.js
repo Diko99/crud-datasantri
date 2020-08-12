@@ -4,7 +4,7 @@ import { Button } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-export default class BottonCreate extends Component {
+export default class ButtonCreate extends Component {
   render () {
     return (
       <div>

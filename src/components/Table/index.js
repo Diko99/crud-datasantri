@@ -7,9 +7,16 @@ import { faInfo, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit'
 import paginationFactory from 'react-bootstrap-table2-paginator'
 import { Link } from 'react-router-dom'
-import { BottonCreate } from '../'
+import { ButtonCreate } from '../'
+import { connect } from 'react-redux'
 
 const { SearchBar } = Search
+
+const mapStateToProps = (state) => {
+  return {
+    users: state.users.users
+  }
+}
 
 const columns = [{
   dataField: 'id',
@@ -68,7 +75,7 @@ const TableComponent = ({ users }) => {
           props => (
             <div>
               <Row className='mb-3'>
-                <Col><BottonCreate /></Col>
+                <Col><ButtonCreate /></Col>
                 <Col>
                   <div className='float-right'>
                     <SearchBar {...props.searchProps} placeholder='cari santri' />
@@ -84,7 +91,7 @@ const TableComponent = ({ users }) => {
   )
 }
 
-export default TableComponent
+export default connect(mapStateToProps, null)(TableComponent)
 
 TableComponent.propTypes = {
   users: PropTypes.array,
