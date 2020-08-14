@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Button, Col, Row } from 'reactstrap'
+import { Container, Button, Col, Row, Spinner } from 'reactstrap'
 import BootstrapTable from 'react-bootstrap-table-next'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,7 +14,8 @@ const { SearchBar } = Search
 
 const mapStateToProps = (state) => {
   return {
-    users: state.users.users
+    getUsersList: state.users.getUsersList,
+    errorUsersList: state.users.errorUsersList
   }
 }
 
@@ -60,33 +61,41 @@ const defaultSorted = [{
   order: 'desc'
 }]
 
-const TableComponent = ({ users }) => {
+const TableComponent = (props) => {
   return (
     <Container>
-      <ToolkitProvider
-        bootstrap4
-        keyField='id'
-        data={users}
-        columns={columns}
-        defaultSorted={defaultSorted}
-        search
-      >
-        {
-          props => (
-            <div>
-              <Row className='mb-3'>
-                <Col><ButtonCreate /></Col>
-                <Col>
-                  <div className='float-right'>
-                    <SearchBar {...props.searchProps} placeholder='cari santri' />
-                  </div>
-                </Col>
-              </Row>
-              <BootstrapTable {...props.baseProps} pagination={paginationFactory()} />
-            </div>
-          )
-        }
-      </ToolkitProvider>
+      {props.getUsersList ? (
+        <ToolkitProvider
+          bootstrap4
+          keyField='id'
+          data={props.getUsersList}
+          columns={columns}
+          defaultSorted={defaultSorted}
+          search
+        >
+          {
+            props => (
+              <div>
+                <Row className='mb-3'>
+                  <Col><ButtonCreate /></Col>
+                  <Col>
+                    <div className='float-right'>
+                      <SearchBar {...props.searchProps} placeholder='cari santri' />
+                    </div>
+                  </Col>
+                </Row>
+                <BootstrapTable {...props.baseProps} pagination={paginationFactory()} />
+              </div>
+            )
+          }
+        </ToolkitProvider>
+
+      ) :
+        (
+          props.errorUsersList
+          ? <div><h1 className='text-center'>{props.errorUsersList}</h1></div>
+          : <div className='text-center'><Spinner color='dark' /></div>
+      )}
     </Container>
   )
 }
