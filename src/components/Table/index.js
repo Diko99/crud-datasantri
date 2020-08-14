@@ -90,12 +90,18 @@ const TableComponent = (props) => {
           }
         </ToolkitProvider>
 
-      ) :
-        (
+      )
+        : (
           props.errorUsersList
-          ? <div><h1 className='text-center'>{props.errorUsersList}</h1></div>
-          : <div className='text-center'><Spinner color='dark' /></div>
-      )}
+            ? <div>
+              <h1 className='text-center'>
+                {props.errorUsersList}
+              </h1>
+            </div>
+            : <div className='text-center'>
+              <Spinner color='dark' />
+            </div>
+        )}
     </Container>
   )
 }

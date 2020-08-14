@@ -1,8 +1,10 @@
-import { GET_USERS_LIST } from '../actions/userAction'
+import { GET_USERS_LIST, GET_USERS_DETAIL } from '../actions/userAction'
 
 const initialState = {
   getUsersList: false,
-  errorUsersList: false
+  errorUsersList: false,
+  getUsersDetail: false,
+  errorUsersDetail: false
 }
 
 const users = (state = initialState, action) => {
@@ -13,6 +15,13 @@ const users = (state = initialState, action) => {
         getUsersList: action.payload.data,
         errorUsersList: action.payload.errorMessage
       }
+    case GET_USERS_DETAIL:
+      return {
+        ...state,
+        getUsersDetail: action.payload.data,
+        errorUsersDetail: action.payload.errorMessage
+      }
+
     default:
       return state
   }

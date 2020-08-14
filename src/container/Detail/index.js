@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
-import { ButtonBack } from '../../components'
+import { ButtonBack, DetailUser } from '../../components'
+import { connect } from 'react-redux'
+import { getUsersDetail } from '../../actions/userAction'
 
-export default class DetailComponent extends Component {
+class DetailComponent extends Component {
+  componentDidMount () {
+    this.props.dispatch(getUsersDetail(this.props.match.params.id))
+  }
+
   render () {
     return (
       <Container>
         <ButtonBack />
-        <h1>DetailComponent</h1>
+        <DetailUser />
       </Container>
     )
   }
 }
+
+export default connect()(DetailComponent)
