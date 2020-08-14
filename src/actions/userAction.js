@@ -4,7 +4,7 @@ export const GET_USERS_LIST = 'GET_USERS_LIST'
 
 export const getUsersList = () => {
   return dispatch => {
-    axios.get('https://my-json-server.typicode.com/diko99/react-redux-json/userss')
+    axios.get('https://my-json-server.typicode.com/diko99/react-redux-json/users')
       .then(response => {
         dispatch({
           type: GET_USERS_LIST,
