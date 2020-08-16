@@ -9,6 +9,7 @@ import paginationFactory from 'react-bootstrap-table2-paginator'
 import { Link } from 'react-router-dom'
 import { ButtonCreate } from '../'
 import { connect } from 'react-redux'
+import './style.css'
 
 const { SearchBar } = Search
 

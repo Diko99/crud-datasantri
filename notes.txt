@@ -13,3 +13,5 @@ prepared for instalation
 -react-redux
 -redux-thunk
 -redux-devtools-extension(https://github.com/zalmoxisus/redux-devtools-extension)
+-redux-form
+-sweetalert

@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
-import { ButtonBack } from '../../components'
+import { ButtonBack, FormComponent } from '../../components'
 
 export default class EditComponent extends Component {
+  componentDidMount (data) {
+    console.log(data)
+  }
+
   render () {
     return (
       <Container>
         <ButtonBack />
-        <h1>EditComponent</h1>
+        <h1>Edit data santri</h1>
+        <FormComponent />
       </Container>
     )
   }
